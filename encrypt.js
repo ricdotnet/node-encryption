@@ -1,14 +1,15 @@
 const crypto = require('crypto');
+const fs = require('fs');
 
-const algorithm = 'camellia-192-ecb';         // algorithm
+const algorithm = 'aes-128-ecb';                // algorithm used for encryption
 
-const iv = crypto.randomBytes(0);        // initialization vector
+// const iv = crypto.randomBytes(32).toString('hex');          // initialization vector
+const iv = Buffer.from('1234567890123456', 'hex');
 
-// const key = crypto.randomBytes(24);       // encryption / decryption key
-const key = Buffer.from('123456789012345678901234', 'utf-8');
+const key = fs.readFileSync('key.txt', 'hex');
 
-const cipher = crypto.createCipheriv(algorithm, key, iv);
-const decipher = crypto.createDecipheriv(algorithm, key, iv);
+const cipher = crypto.createCipheriv(algorithm, key, Buffer.alloc(0));
+const decipher = crypto.createDecipheriv(algorithm, key, Buffer.alloc(0));
 
 /**
  *
@@ -37,4 +38,4 @@ function decryptData(data) {
 module.exports = {
   encryptData,
   decryptData,
-}
+};
