@@ -18,7 +18,6 @@ if (args.length === 1 && args[0] === '--encrypt') {
 
 if (args.length === 2 && args[0] === '--encrypt') {
   const data = fs.readFileSync(args[1], 'utf8');
-  const key = fs.readFileSync('key.txt', 'hex');
   fs.writeFileSync(`${args[1]}.encrypted`, encryptData(data), 'utf8');
 }
 
@@ -30,5 +29,5 @@ if (args.length === 1 && args[0] === '--decrypt') {
 
 if (args.length === 2 && args[0] === '--decrypt') {
   const data = fs.readFileSync(args[1], 'utf-8');
-  fs.writeFileSync(`${args[1]}.decrypted`, decryptData(data), 'utf-8');
+  fs.writeFileSync(`data.txt.decrypted`, decryptData(data), 'utf-8');
 }
