@@ -10,7 +10,6 @@ import static javax.crypto.Cipher.DECRYPT_MODE;
 import static javax.crypto.Cipher.ENCRYPT_MODE;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Encrypt {
@@ -29,7 +28,7 @@ public class Encrypt {
     }
   }
 
-  void doEncryption () throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException {
+  void doEncryption () throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
     cipher.init(ENCRYPT_MODE, secretKey);
     byte[] encrypted = cipher.doFinal(readFileContent("../data.txt").getBytes(StandardCharsets.UTF_8));
 
